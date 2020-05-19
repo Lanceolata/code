@@ -6,7 +6,7 @@ class Solution {
  public:
   int coinChange(vector<int>& coins, int amount) {
     int maxValue = amount + 1;
-    vector<int> dp(amount + 2, maxValue);
+    vector<int> dp(amount + 1, maxValue);
     dp[0] = 0;   
     for (int i = 1; i <= amount; i++) {
       for (int j = 0; j < coins.size(); j++) {

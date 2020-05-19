@@ -8,7 +8,7 @@ public class Question_0322_Coin_Change {
             return -1;
         }
         int max = amount + 1;
-        int[] dp = new int[amount + 2];
+        int[] dp = new int[amount + 1];
         Arrays.fill(dp, max);
         dp[0] = 0;
         for (int i = 1; i <= amount; i++) {
