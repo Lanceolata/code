@@ -1,26 +1,23 @@
+#include <math.h>
 #include <vector>
 
 using namespace std;
 
 class Solution {
  public:
-  int integerBreak_math(int n) {
-    if(n==2) {
-      return 1;
+  int integerBreak1(int n) {
+    if (n == 2 || n == 3) {
+      return n - 1;
     }
-    if(n==3) {
-      return 2;
-    }
-    int product = 1;
+    int res = 1;
     while(n > 4) {
-      product *= 3;
+      res *= 3;
       n -= 3;
     }
-    product *= n;
-    return product;
+    return res * n;
   }
 
-  int integerBreak(int n) {
+  int integerBreak2(int n) {
     vector<int> dp(n + 1, 0);
     dp[1] = 1;
     for (int i = 2; i <= n; i++) {
@@ -29,5 +26,16 @@ class Solution {
       }
     }
     return dp[n];
+  }
+
+  int integerBreak3(int n) {
+    if (n == 2 || n == 3) {
+      return n - 1;
+    }
+    if (n == 4) {
+      return 4;
+    }
+    n -= 5;
+    return (int)pow(3, (n / 3 + 1)) * (n % 3 + 2);
   }
 };
