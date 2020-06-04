@@ -1,8 +1,6 @@
 package com.lanceolata.coding.algorithms.java.leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Question_0349_Intersection_of_Two_Arrays {
     public int[] intersection(int[] nums1, int[] nums2) {
@@ -32,6 +30,26 @@ public class Question_0349_Intersection_of_Two_Arrays {
         int[] res = new int[list.size()];
         for (i = 0; i < list.size(); i++) {
             res[i] = list.get(i);
+        }
+        return res;
+    }
+
+    public int[] intersection2(int[] nums1, int[] nums2) {
+        if (nums1 == null || nums2 == null) {
+            return nums1 == null ? nums2 : nums1;
+        }
+        Set<Integer> set1 = new HashSet<>(), set2 = new HashSet<>();
+        for (int n : nums1) {
+            set1.add(n);
+        }
+        for (int n : nums2) {
+            set2.add(n);
+        }
+        set1.retainAll(set2);
+        int[] res = new int[set1.size()];
+        int i = 0;
+        for (int n : set1) {
+            res[i++] = n;
         }
         return res;
     }
