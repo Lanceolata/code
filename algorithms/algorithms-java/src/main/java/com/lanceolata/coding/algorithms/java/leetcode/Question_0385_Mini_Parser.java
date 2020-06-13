@@ -51,18 +51,18 @@ public class Question_0385_Mini_Parser {
         }
         NestedInteger cur = new NestedInteger();
         Stack<NestedInteger> stack = new Stack<>();
-        for (int i = 1, start = 1; i < s.length(); ++i) {
-            if (s.charAt(i) == '[') {
+        for (int i = 1, j = 1; j < s.length(); j++) {
+            if (s.charAt(j) == '[') {
                 stack.push(cur);
                 cur = new NestedInteger();
-                stack.peek().add(cur);
-                start = i + 1;
-            } else if (s.charAt(i) == ']' || s.charAt(i) == ',') {
-                if (start < i) {
-                    cur.add(new NestedInteger(Integer.parseInt(s.substring(start, i))));
+                i = j + 1;
+            } else if (s.charAt(j) == ']' || s.charAt(j) == ',') {
+                if (i < j) {
+                    cur.add(new NestedInteger(Integer.parseInt(s.substring(i, j))));
                 }
-                start = i + 1;
-                if (s.charAt(i) == ']' && !stack.empty()) {
+                i = j + 1;
+                if (s.charAt(j) == ']' && !stack.empty()) {
+                    stack.peek().add(cur);
                     cur = stack.pop();
                 }
             }

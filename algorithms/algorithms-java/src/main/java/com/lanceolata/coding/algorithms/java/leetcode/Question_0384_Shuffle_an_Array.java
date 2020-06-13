@@ -4,37 +4,35 @@ import java.util.Random;
 
 public class Question_0384_Shuffle_an_Array {
 
-    private int[] array;
-    private int[] original;
-    private Random rand = new Random();
+    private int[] nums;
+    private Random random;
 
     public Question_0384_Shuffle_an_Array(int[] nums) {
-        this.array = nums;
-        this.original = nums.clone();
+        this.nums = nums;
+        this.random = new Random();
     }
 
     /** Resets the array to its original configuration and return it. */
     public int[] reset() {
-        array = original;
-        original = original.clone();
-        return original;
+        return nums;
     }
 
     /** Returns a random shuffling of the array. */
     public int[] shuffle() {
-        for (int i = 0; i < array.length; i++) {
-            swapAt(i, randRange(i, array.length));
+        int[] res = nums.clone();
+        for (int i = 0; i < res.length; i++) {
+            swapAt(res, i, randRange(i, res.length));
         }
-        return array;
+        return res;
     }
 
     private int randRange(int min, int max) {
-        return rand.nextInt(max - min) + min;
+        return random.nextInt(max - min) + min;
     }
 
-    private void swapAt(int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+    private void swapAt(int[] res, int i, int j) {
+        int temp = res[i];
+        res[i] = res[j];
+        res[j] = temp;
     }
 }

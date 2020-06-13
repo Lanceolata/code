@@ -14,10 +14,7 @@ class Solution {
       index[c]++;
     }
     for (char c : ransomNote) {
-      index[c]--;
-    }
-    for (int i : index) {
-      if (i < 0) {
+      if (index[c]-- <= 0) {
         return false;
       }
     }

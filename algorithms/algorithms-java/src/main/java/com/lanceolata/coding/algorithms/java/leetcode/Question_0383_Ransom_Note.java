@@ -10,10 +10,7 @@ public class Question_0383_Ransom_Note {
             index[magazine.charAt(i)]++;
         }
         for (int i = 0; i < ransomNote.length(); i++) {
-            index[ransomNote.charAt(i)]--;
-        }
-        for (int i = 0; i < index.length; i++) {
-            if (index[i] < 0) {
+            if (index[ransomNote.charAt(i)]-- <= 0) {
                 return false;
             }
         }

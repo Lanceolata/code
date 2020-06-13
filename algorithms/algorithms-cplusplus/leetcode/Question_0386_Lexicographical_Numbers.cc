@@ -11,14 +11,13 @@ class Solution {
       res[i] = cur;
       if (cur * 10 <= n) {
         cur *= 10;
+      } else if (cur % 10 != 9 && cur + 1 <= n) {
+        cur++;
       } else {
-        if (cur >= n) {
+        while ((cur / 10) % 10 == 9) {
           cur /= 10;
         }
-        cur += 1;
-        while (cur % 10 == 0) {
-          cur /= 10;
-        }
+        cur = cur / 10 + 1;
       }
     }
     return res;
