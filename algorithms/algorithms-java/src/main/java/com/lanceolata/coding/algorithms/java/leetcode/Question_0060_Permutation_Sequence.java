@@ -8,7 +8,6 @@ public class Question_0060_Permutation_Sequence {
             nums[i] = i + 1;
             pCount *= i + 1;
         }
-
         k--;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
@@ -21,7 +20,6 @@ public class Question_0060_Permutation_Sequence {
             }
             k = k % pCount;
         }
-
         return sb.toString();
     }
 }
