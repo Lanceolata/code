@@ -4,32 +4,32 @@ import java.util.*;
 
 public class Question_0310_Minimum_Height_Trees {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        iList<Integer> res = new ArrayList<>();
         if (n == 1) {
-            return Collections.singletonList(0);
+            res.add(0);
+            return res;
         }
-        List<Set<Integer>> adj = new ArrayList<>(n);
+        List<Set<Integer>> nodes = new ArrayList<>(n);
         for (int i = 0; i < n; ++i) {
-            adj.add(new HashSet<>());
+            nodes.add(new HashSet<>());
         }
         for (int[] edge : edges) {
-            adj.get(edge[0]).add(edge[1]);
-            adj.get(edge[1]).add(edge[0]);
+            nodes.get(edge[0]).add(edge[1]);
+            nodes.get(edge[1]).add(edge[0]);
         }
-
         List<Integer> leaves = new ArrayList<>();
         for (int i = 0; i < n; ++i) {
-            if (adj.get(i).size() == 1) {
+            if (nodes.get(i).size() == 1) {
                 leaves.add(i);
             }
         }
-
         while (n > 2) {
             n -= leaves.size();
             List<Integer> newLeaves = new ArrayList<>();
             for (int i : leaves) {
-                int j = adj.get(i).iterator().next();
-                adj.get(j).remove(i);
-                if (adj.get(j).size() == 1) {
+                int j = nodes.get(i).iterator().next();
+                nodes.get(j).remove(i);
+                if (nodes.get(j).size() == 1) {
                     newLeaves.add(j);
                 }
             }

@@ -17,11 +17,7 @@ public class Question_0306_Additive_Number {
     }
 
     private boolean isValid(String num, int i, int j) {
-        // make sure an at least two digit number does not start with 0
-        if (num.charAt(0) == '0' && i > 1) {
-            return false;
-        }
-        if (num.charAt(i) == '0' && j > 1) {
+        if ((num.charAt(0) == '0' && i > 1) || (num.charAt(i) == '0' && j > 1)) {
             return false;
         }
         String sum;
