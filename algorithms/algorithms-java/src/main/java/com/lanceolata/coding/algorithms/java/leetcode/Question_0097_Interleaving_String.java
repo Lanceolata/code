@@ -2,7 +2,9 @@ package com.lanceolata.coding.algorithms.java.leetcode;
 
 public class Question_0097_Interleaving_String {
     public boolean isInterleave(String s1, String s2, String s3) {
-        if ((s1.length() + s2.length()) != s3.length()) return false;
+        if ((s1.length() + s2.length()) != s3.length()) {
+            return false;
+        }
         boolean[][] matrix = new boolean[s2.length() + 1][s1.length() + 1];
         matrix[0][0] = true;
         for (int i = 1; i < matrix[0].length; i++){

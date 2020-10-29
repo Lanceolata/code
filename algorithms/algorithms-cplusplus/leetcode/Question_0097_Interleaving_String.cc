@@ -6,7 +6,9 @@ using namespace std;
 class Solution {
  public:
   bool isInterleave(string s1, string s2, string s3) {
-    if (s1.size() + s2.size() != s3.size()) return false;
+    if (s1.size() + s2.size() != s3.size()) {
+      return false;
+    }
     int m = s1.size(), n = s2.size();
     vector<vector<bool>> dp(m + 1, vector<bool>(n + 1, false));
     dp[0][0] = true;
