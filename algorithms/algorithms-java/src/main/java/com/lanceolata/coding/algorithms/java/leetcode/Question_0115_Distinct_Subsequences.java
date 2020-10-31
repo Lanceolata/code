@@ -5,20 +5,19 @@ public class Question_0115_Distinct_Subsequences {
         if (s == null || t == null) {
             return 0;
         }
-        int m = t.length(), n = s.length();
-        int[][] dp = new int[m + 1][n + 1];
-        for (int j = 0; j <= n; j++) {
-            dp[0][j] = 1;
+        int[][] dp = new int[t.length() + 1][s.length() + 1];
+        for (int i = 0; i <= s.length(); i++) {
+            dp[0][i] = 1;
         }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (t.charAt(i) == s.charAt(j)) {
-                    dp[i + 1][j + 1] = dp[i][j] + dp[i + 1][j];
+        for (int i = 1; i <= t.length(); i++) {
+            for (int j = 1; j <= s.length(); j++) {
+                if(t.charAt(i - 1) == s.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + dp[i][j - 1];
                 } else {
-                    dp[i + 1][j + 1] = dp[i + 1][j];
+                    dp[i][j] = dp[i][j - 1];
                 }
             }
         }
-        return dp[m][n];
+        return dp[t.length()][s.length()];
     }
 }
