@@ -15,9 +15,6 @@ class Solution {
       for (int j = p.size() - 1; j >= 0; j--) {
         bool match = i < s.size() && (s[i] == p[j] || p[j] == '.');
         if (j + 1 < p.size() && p[j + 1] == '*') {
-          // dp[i][j] 表示s索引大于i与p索引大于j是否匹配
-          // *表示0-多个，当表示0个时  判断dp[i][j + 2]
-          // 当表示多个时，则i+1
           dp[i][j] = dp[i][j + 2] || (match && dp[i + 1][j]);
         } else {
           dp[i][j] = match && dp[i + 1][j + 1];
