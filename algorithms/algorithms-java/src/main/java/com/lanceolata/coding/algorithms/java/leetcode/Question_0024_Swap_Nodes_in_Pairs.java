@@ -5,10 +5,9 @@ public class Question_0024_Swap_Nodes_in_Pairs {
     public class ListNode {
         int val;
         ListNode next;
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     public ListNode swapPairs(ListNode head) {
