@@ -1,9 +1,11 @@
 
-// Definition for singly-linked list.
+//Definition for singly-linked list.
 struct ListNode {
   int val;
   ListNode *next;
-  ListNode(int x) : val(x), next(NULL) {}
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 class Solution {
@@ -23,7 +25,7 @@ class Solution {
       head = next;
     }
     p1->next = dummy2.next;
-    p2->next = NULL;
+    p2->next = nullptr;
     return dummy1.next;
   }
 };
