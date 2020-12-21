@@ -5,11 +5,9 @@ public class Question_0109_Convert_Sorted_List_to_Binary_Search_Tree {
     public class ListNode {
         int val;
         ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     // Definition for a binary tree node.
@@ -17,9 +15,12 @@ public class Question_0109_Convert_Sorted_List_to_Binary_Search_Tree {
         int val;
         TreeNode left;
         TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
     }
 
