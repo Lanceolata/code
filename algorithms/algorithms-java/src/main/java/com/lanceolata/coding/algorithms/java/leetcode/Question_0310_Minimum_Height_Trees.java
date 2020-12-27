@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Question_0310_Minimum_Height_Trees {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
-        iList<Integer> res = new ArrayList<>();
+        List<Integer> res = new ArrayList<>();
         if (n == 1) {
             res.add(0);
             return res;
