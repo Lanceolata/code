@@ -9,13 +9,17 @@ class Solution {
   int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
     unordered_set<string> begin({beginWord}), end({endWord}),
         bank(wordList.begin(), wordList.end());
-    if (bank.find(endWord) == bank.end()) return 0;
-    return helper(begin, end, bank, 1);
+    if (bank.find(endWord) == bank.end()) {
+      return 0;
+    }
+    return help(begin, end, bank, 1);
   }
 
-  int helper(unordered_set<string>& begin, unordered_set<string>& end,
+  int help(unordered_set<string>& begin, unordered_set<string>& end,
       unordered_set<string>& bank, int level) {
-    if (begin.empty()) return 0;
+    if (begin.empty()) {
+      return 0;
+    }
     level += 1;
     unordered_set<string> newBegin;
     for (string s : begin) {
@@ -24,7 +28,9 @@ class Solution {
         for (char ch = 'a'; ch <= 'z'; ch++) {
           if (ch != tem) {
             s[i] = ch;
-            if (end.find(s) != end.end()) return level;
+            if (end.find(s) != end.end()) {
+              return level;
+            }
             if (bank.find(s) != bank.end()) {
               newBegin.insert(s);
               bank.erase(s);
@@ -36,9 +42,9 @@ class Solution {
     }
 
     if (newBegin.size() > end.size()) {
-      return helper(end, newBegin, bank, level);
+      return help(end, newBegin, bank, level);
     } else {
-      return helper(newBegin, end, bank, level);
+      return help(newBegin, end, bank, level);
     }
   }
 };
