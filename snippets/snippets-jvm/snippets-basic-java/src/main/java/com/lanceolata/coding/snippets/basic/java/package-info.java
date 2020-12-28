@@ -1,1 +1,0 @@
-package com.lanceolata.coding.snippets.basic.java;
