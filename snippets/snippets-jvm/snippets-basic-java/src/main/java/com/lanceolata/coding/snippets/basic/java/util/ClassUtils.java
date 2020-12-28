@@ -1,4 +1,4 @@
-package com.lanceolata.coding.snippets.common.java.utils;
+package com.lanceolata.coding.snippets.basic.java.util;
 
 public final class ClassUtils {
 
