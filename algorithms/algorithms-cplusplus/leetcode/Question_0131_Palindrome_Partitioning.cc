@@ -12,7 +12,7 @@ class Solution {
     return res;
   }
 
-  void helper(string& s, size_t pos, vector<string>& vec, vector<vector<string>>& res) {
+  void help(string& s, size_t pos, vector<string>& vec, vector<vector<string>>& res) {
     if (pos >= s.size()) {
       res.push_back(vec);
       return;
