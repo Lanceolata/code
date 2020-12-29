@@ -26,7 +26,7 @@
     </properties>
 
     <modules>
-        <module>snippets-basic-java</module>
+        <module>snippets-common-java</module>
     </modules>
 
     <profiles>
@@ -102,6 +102,18 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>30.1-jre</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.4.7</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>1.8</version>
             </dependency>
 
             <!-- json -->
