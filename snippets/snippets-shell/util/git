@@ -1,0 +1,14 @@
+
+# Copyright (c) 2018 Lanceolata
+
+
+# OBJS 本地编译目录
+prefix=${prefix:-$OBJS}
+
+if test -n "$url"; then
+    git clone $url $prefix
+else
+    echo "download url is empty."
+    exit 1
+fi
+

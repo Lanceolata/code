@@ -1,0 +1,37 @@
+
+# Copyright (c) 2018 Lanceolata
+
+
+help=no
+
+MODULE=
+CLEANUP=no
+
+if test -z "$1";then
+    echo "$0: error: empty option"
+    exit 1
+fi
+
+for option
+do
+    case "$option" in
+        --help)                 help=yes                ;;
+        --cleanup)              CLEANUP=yes             ;;
+        *)
+            echo "$0: error: invalid option \"$option\""
+            exit 1
+        ;;
+    esac
+done
+
+if [ $help = yes ];then
+
+cat << END
+
+    --help                      print help message
+    --cleanup                   cleanup
+
+END
+    exit 1
+fi
+

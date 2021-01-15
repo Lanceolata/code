@@ -9,7 +9,7 @@ public class Question_0166_Fraction_to_Recurring_Decimal {
             return null;
         }
         StringBuilder sb = new StringBuilder();
-        if (numerator < 0 && denominator > 0 || numerator > 0 && denominator < 0) {
+        if ((numerator < 0 && denominator > 0) || (numerator > 0 && denominator < 0)) {
             sb.append("-");
         }
         long numerator1 = Math.abs((long) numerator);

@@ -3,7 +3,9 @@
 struct ListNode {
   int val;
   ListNode *next;
-  ListNode(int x) : val(x), next(NULL) {}
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 class Solution {
@@ -18,7 +20,7 @@ class Solution {
       }
     }
     if (!fast || !fast->next) {
-      return NULL;
+      return nullptr;
     }
     slow = head;
     while (slow != fast) {

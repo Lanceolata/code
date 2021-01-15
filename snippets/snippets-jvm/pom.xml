@@ -10,6 +10,12 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>snippets-core</module>
+        <module>snippets-core-scala</module>
+        <module>snippets-spark</module>
+    </modules>
+
     <properties>
         <!-- Application settings -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,57 +31,22 @@
         <thrift.path>thrift</thrift.path>
     </properties>
 
-    <modules>
-        <module>snippets-common-java</module>
-    </modules>
+    <dependencies>
 
-    <profiles>
-        <profile>
-            <id>production</id>
-            <activation>
-                <property>
-                    <name>production</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <env.name>production</env.name>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>preview</id>
-            <activation>
-                <property>
-                    <name>preview</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <env.name>preview</env.name>
-            </properties>
-        </profile>
-
-        <profile>
-            <id>staging</id>
-            <activation>
-                <property>
-                    <name>staging</name>
-                    <value>true</value>
-                </property>
-            </activation>
-            <properties>
-                <env.name>staging</env.name>
-            </properties>
-        </profile>
-    </profiles>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <!--项目公共模块-->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>snippets-basic-java</artifactId>
+                <artifactId>snippets-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>snippets-core-scala_${scala.binary.version}</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -114,6 +85,19 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-csv</artifactId>
                 <version>1.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-exec</artifactId>
+                <version>1.3</version>
+            </dependency>
+
+            <!--数据加密-->
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk16</artifactId>
+                <version>1.46</version>
             </dependency>
 
             <!-- json -->
@@ -197,6 +181,26 @@
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-hdfs</artifactId>
                 <version>${hadoop.version}</version>
+            </dependency>
+
+            <!-- hbase -->
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-client</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.hbase</groupId>
+                <artifactId>hbase-server</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+
+            <!--kafka-->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka_${scala.binary.version}</artifactId>
+                <version>2.4.1</version>
             </dependency>
 
             <!-- spark -->
@@ -341,7 +345,52 @@
         </dependencies>
     </dependencyManagement>
 
+    <profiles>
+        <profile>
+            <id>production</id>
+            <activation>
+                <property>
+                    <name>production</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <env.name>production</env.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>preview</id>
+            <activation>
+                <property>
+                    <name>preview</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <env.name>preview</env.name>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>staging</id>
+            <activation>
+                <property>
+                    <name>staging</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <properties>
+                <env.name>staging</env.name>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
+        <plugins>
+
+        </plugins>
+
         <pluginManagement>
             <plugins>
                 <plugin>

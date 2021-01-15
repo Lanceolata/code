@@ -1,0 +1,17 @@
+
+# Copyright (c) 2018 Lanceolata
+
+
+# OBJS 本地编译目录
+prefix=${prefix:-$OBJS}
+
+if test -n "$url"; then
+    filename=$(basename "$url")
+    filepath="$prefix/$filename"
+    test -e $filepath && rm $filepath
+    wget --no-check-certificate -O $filepath $url
+else
+    echo "download url is empty."
+    exit 1
+fi
+

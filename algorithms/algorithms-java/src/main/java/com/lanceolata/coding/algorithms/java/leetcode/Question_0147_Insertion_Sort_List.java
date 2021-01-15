@@ -5,11 +5,9 @@ public class Question_0147_Insertion_Sort_List {
     public class ListNode {
         int val;
         ListNode next;
-
-        ListNode(int x) {
-            val = x;
-            next = null;
-        }
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
     public ListNode insertionSortList(ListNode head) {
