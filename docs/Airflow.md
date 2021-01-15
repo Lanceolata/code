@@ -90,9 +90,9 @@ Use Airflow to author workflows as directed acyclic graphs (DAGs) of tasks. The 
 
 2. 代理
 
-- 1.8不支持代理，以系统时间为准，不区分时区
-- 1.9不支持代理，时区为utc
-- 1.10区分时区，支持代理，webserver前端显示为utc时间，调度不受影响，但通过Macros传入的日期需处理
+        1.8不支持代理，以系统时间为准，不区分时区
+        1.9不支持代理，时区为utc
+        1.10区分时区，支持代理，webserver前端显示为utc时间，调度不受影响，但通过Macros传入的日期需处理
 
 3. undefined symbol: PyUnicodeUCS4_DecodeUTF8
 
