@@ -7,14 +7,16 @@ struct TreeNode {
   int val;
   TreeNode *left;
   TreeNode *right;
-  TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 class Solution {
  public:
   TreeNode* invertTreeRecursive(TreeNode* root) {
     if (!root) {
-      return NULL;
+      return nullptr;
     }
     TreeNode* left = invertTree(root->left);
     TreeNode* right = invertTree(root->right);
@@ -25,7 +27,7 @@ class Solution {
 
   TreeNode* invertTree(TreeNode* root) {
     if (!root) {
-      return NULL;
+      return nullptr;
     }
     queue<TreeNode*> q;
     q.push(root);
