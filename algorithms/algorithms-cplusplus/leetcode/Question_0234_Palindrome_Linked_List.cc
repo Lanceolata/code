@@ -3,7 +3,9 @@
 struct ListNode {
   int val;
   ListNode *next;
-  ListNode(int x) : val(x), next(NULL) {}
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
 class Solution {
@@ -19,7 +21,7 @@ class Solution {
     }
     fast = slow->next;
     fast = reverse(fast);
-    slow->next = NULL;
+    slow->next = nullptr;
     while (fast) {
       if (head->val != fast->val) {
         return false;
@@ -31,7 +33,7 @@ class Solution {
   }
 
   ListNode* reverse(ListNode* head) {
-    ListNode* pre = NULL, *next = NULL;
+    ListNode* pre = nullptr, *next = nullptr;
     while (head) {
       next = head->next;
       head->next = pre;
