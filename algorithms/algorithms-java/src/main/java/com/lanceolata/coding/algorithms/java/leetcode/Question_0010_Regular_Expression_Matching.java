@@ -7,8 +7,8 @@ public class Question_0010_Regular_Expression_Matching {
         }
         boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
         dp[s.length()][p.length()] = true;
-        for (int i = s.length(); i>= 0; i--) {
-            for (int j = p.length() - 1; j >= 0; j--) {
+        for (int i = s.length(); i >= 0; i--) {
+            for (int j = p.length() - 1; j >= 0; j--) { // 注意j的起始位置
                 boolean match = i < s.length() && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.');
                 if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
                     dp[i][j] = dp[i][j + 2] || (match && dp[i + 1][j]);

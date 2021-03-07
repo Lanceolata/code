@@ -4,11 +4,11 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class Question_0290_Word_Pattern {
-    public boolean wordPattern(String pattern, String str) {
-        if (pattern == null || str == null) {
+    public boolean wordPattern(String pattern, String s) {
+        if (pattern == null || s == null) {
             return false;
         }
-        String[] arr = str.split(" ");
+        String[] arr = s.split(" ");
         if (pattern.length() != arr.length) {
             return false;
         }

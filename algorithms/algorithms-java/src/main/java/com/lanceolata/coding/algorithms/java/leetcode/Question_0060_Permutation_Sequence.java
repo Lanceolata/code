@@ -15,8 +15,8 @@ public class Question_0060_Permutation_Sequence {
             int select = k / pCount;
             sb.append(String.valueOf(nums[select]));
 
-            for(int j = select; j < n-i-1; j++) {
-                nums[j] = nums[j+1];
+            for(int j = select; j < n - i - 1; j++) {
+                nums[j] = nums[j + 1];
             }
             k = k % pCount;
         }

@@ -20,7 +20,8 @@ public class Question_0138_Copy_List_with_Random_Pointer {
         }
         Node p = head;
         while (p != null) {
-            Node copy = new Node(p.val, p.next, null);
+            Node copy = new Node(p.val);
+            copy.next = p.next;
             p.next = copy;
             p = p.next.next;
         }

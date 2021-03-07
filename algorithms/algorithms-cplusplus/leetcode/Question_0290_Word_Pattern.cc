@@ -7,12 +7,12 @@ using namespace std;
 
 class Solution {
  public:
-  bool wordPattern(string pattern, string str) {
-    istringstream strcin(str);
-    string s;
+  bool wordPattern(string pattern, string s) {
+    istringstream strcin(s);
+    string ss;
     vector<string> words;
-    while(strcin >> s) {
-      words.push_back(s);
+    while(strcin >> ss) {
+      words.push_back(ss);
     }
     vector<string> vec(26, "");
     if (words.size() != pattern.size()) {

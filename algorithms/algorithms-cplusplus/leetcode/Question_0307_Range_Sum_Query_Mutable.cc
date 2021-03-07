@@ -12,40 +12,40 @@ class NumArray {
     }
   }
 
-  void update(int i, int val) {
-    i += n;
-    tree[i] = val;
-    while (i > 0) {
-      int left = i;
-      int right = i;
-      if (i % 2 == 0) {
-        right = i + 1;
+  void update(int index, int val) {
+    index += n;
+    tree[index] = val;
+    while (index > 0) {
+      int left = index;
+      int right = index;
+      if (index % 2 == 0) {
+        right = index + 1;
       } else {
-        left = i - 1;
+        left = index - 1;
       }
       // parent is updated after child is updated
-      tree[i / 2] = tree[left] + tree[right];
-      i /= 2;
+      tree[index / 2] = tree[left] + tree[right];
+      index /= 2;
     }
   }
 
-  int sumRange(int i, int j) {
+  int sumRange(int left, int right) {
     // get leaf with value 'i'
-    i += n;
+    left += n;
     // get leaf with value 'j'
-    j += n;
+    right += n;
     int sum = 0;
-    while (i <= j) {
-      if ((i % 2) == 1) {
-        sum += tree[i];
-        i++;
+    while (left <= right) {
+      if ((left % 2) == 1) {
+        sum += tree[left];
+        left++;
       }
-      if ((j % 2) == 0) {
-        sum += tree[j];
-        j--;
+      if ((right % 2) == 0) {
+        sum += tree[right];
+        right--;
       }
-      i /= 2;
-      j /= 2;
+      left /= 2;
+      right /= 2;
     }
     return sum;
   }

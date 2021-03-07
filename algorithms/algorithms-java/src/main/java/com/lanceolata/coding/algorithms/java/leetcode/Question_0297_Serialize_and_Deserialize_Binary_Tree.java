@@ -2,13 +2,16 @@ package com.lanceolata.coding.algorithms.java.leetcode;
 
 public class Question_0297_Serialize_and_Deserialize_Binary_Tree {
     // Definition for a binary tree node.
-    public static class TreeNode {
+    public class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
     }
 

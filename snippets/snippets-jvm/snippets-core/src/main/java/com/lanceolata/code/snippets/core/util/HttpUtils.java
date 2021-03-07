@@ -22,6 +22,8 @@ import java.util.List;
  * HTTP工具类
  */
 public class HttpUtils {
+    private HttpUtils() {}
+
     private static final Logger LOGGER = LoggerFactory.getLogger(HttpUtils.class);
 
     /**

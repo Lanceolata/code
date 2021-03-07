@@ -9,7 +9,7 @@ class Solution {
     if (p.empty()) {
       return s.empty();
     }
-    vector<vector<bool>> dp(s.size() + 1, vector<bool>(p.size() + 1, false));
+    vector<vector<bool> > dp(s.size() + 1, vector<bool>(p.size() + 1, false));
     dp[s.size()][p.size()] = true;
     for (int i = s.size(); i >= 0; i--) {
       for (int j = p.size() - 1; j >= 0; j--) {

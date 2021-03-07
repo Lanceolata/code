@@ -21,23 +21,23 @@ public class Question_0307_Range_Sum_Query_Mutable {
         }
     }
 
-    public void update(int i, int val) {
-        i += n;
-        tree[i] = val;
-        while (i > 0) {
-            tree[i / 2] = tree[i] + tree[i ^ 1];
-            i /= 2;
+    public void update(int index, int val) {
+        index += n;
+        tree[index] = val;
+        while (index > 0) {
+            tree[index / 2] = tree[index] + tree[index ^ 1];
+            index /= 2;
         }
     }
 
-    public int sumRange(int i, int j) {
+    public int sumRange(int left, int right) {
         int sum = 0;
-        for (i += n, j += n; i <= j; i /= 2, j /= 2) {
-            if ((i & 1) == 1) {
-                sum += tree[i++];
+        for (left += n, right += n; left <= right; left /= 2, right /= 2) {
+            if ((left & 1) == 1) {
+                sum += tree[left++];
             }
-            if ((j & 1) == 0) {
-                sum += tree[j--];
+            if ((right & 1) == 0) {
+                sum += tree[right--];
             }
         }
         return sum;
