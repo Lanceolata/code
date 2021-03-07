@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class TagHLL {
+public class TagHll {
     private Long id;
     private String key;
     private String value;
@@ -13,10 +13,10 @@ public class TagHLL {
     private String table;
     private Timestamp updateTime;
 
-    public TagHLL() {
+    public TagHll() {
     }
 
-    public TagHLL(String key, String value, byte[] hll, Long version, String table) {
+    public TagHll(String key, String value, byte[] hll, Long version, String table) {
         this.key = key;
         this.value = value;
         this.hll = hll;
@@ -36,7 +36,7 @@ public class TagHLL {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TagHLL tagHll = (TagHLL) o;
+        TagHll tagHll = (TagHll) o;
         return Objects.equals(id, tagHll.id) &&
                 Objects.equals(key, tagHll.key) &&
                 Objects.equals(value, tagHll.value) &&

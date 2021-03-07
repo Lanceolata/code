@@ -4,5 +4,5 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.lanceolata.code.snippets.dao.mapper.test.TagHllMapper">
-    <resultMap id="TagHll" type="com.lanceolata.code.snippets.dao.entity.test.TagHLL"/>
+    <resultMap id="TagHll" type="com.lanceolata.code.snippets.dao.entity.test.TagHll"/>
 </mapper>
