@@ -8,14 +8,23 @@ import java.util.List;
 @Mapper
 public interface TagHllMapper {
     @Insert("<script>" +
-            "replace into `xxx` (`key`, `value`, `hll`, `version`, `table`) values " +
-            "<foreach collection ='tagHllList' item='th' separator =','> (#{th.key}, #{th.value}, #{th.hll}, #{th.version}, #{th.table}) </foreach >" +
+            "replace into `xxx` (`tag_code`, `tag_value`, `hll`, `version`, `table_mark`) values " +
+            "<foreach collection ='tagHllList' item='th' separator =','> (#{th.tagCode}, #{th.tagValue}, #{th.hll}, #{th.version}, #{th.tableMark}) </foreach >" +
             "</script>")
     void insertBatch(@Param("tagHllList") List<TagHll> tagHllList);
 
-    @Delete("delete from `xxx` where `table` = #{table} and `version` < #{version}")
-    void deleteHistoryByTableVersion(@Param("table") String table, @Param("version") Long version);
+    @Delete("delete from `xxx` where `table_mark` = #{tableMark} and `version` < #{version}")
+    void deleteHistoryByTableMarkAndVersion(@Param("tableMark") String tableMark, @Param("version") Long version);
 
-    @Select("select * from xxx where `key` = #{key} and `value` = #{value}")
-    TagHll selectByKeyAndValue(@Param("key") String key, @Param("value") String value);
+    @Select("select * from xxx where `tag_code` = #{tagCode}")
+    List<TagHll> selectByTagCode(@Param("tagCode") String tagCode);
+
+    @Select("select * from xxx where `tag_code` = #{tagCode} and `tag_value` = #{tagValue}")
+    TagHll selectByTagCodeAndTagValue(@Param("tagCode") String tagCode, @Param("tagValue") String tagValue);
+
+    @Select("<script>" +
+            "select * from xxx where " +
+            "<foreach collection ='tagHllList' item='th' separator ='or'> (`tag_code` = #{th.tagCode} and `tag_value` = #{th.tagValue}) </foreach >" +
+            "</script>")
+    List<TagHll> selectByTagCodeAndTagValueBatch(@Param("tagHllList") List<TagHll> tagHllList);
 }

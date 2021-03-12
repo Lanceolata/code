@@ -20,7 +20,6 @@ public class DatabaseService {
             try {
                 tagHllMapper = MybatisUtils.getMapper(TagHllMapper.class);
             } catch (IOException e) {
-                e.printStackTrace();
                 LOGGER.error("get mapper failed.", e);
                 throw new RuntimeException(e);
             }

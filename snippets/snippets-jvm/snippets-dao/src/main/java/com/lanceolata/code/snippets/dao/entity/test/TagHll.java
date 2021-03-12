@@ -6,30 +6,27 @@ import java.util.Objects;
 
 public class TagHll {
     private Long id;
-    private String key;
-    private String value;
+    private String tagCode;
+    private String tagValue;
     private byte[] hll;
     private Long version;
-    private String table;
+    private String tableMark;
     private Timestamp updateTime;
 
     public TagHll() {
     }
 
-    public TagHll(String key, String value, byte[] hll, Long version, String table) {
-        this.key = key;
-        this.value = value;
+    public TagHll(String tagCode, String tagValue) {
+        this.tagCode = tagCode;
+        this.tagValue = tagValue;
+    }
+
+    public TagHll(String tagCode, String tagValue, byte[] hll, Long version, String tableMark) {
+        this.tagCode = tagCode;
+        this.tagValue = tagValue;
         this.hll = hll;
         this.version = version;
-        this.table = table;
-    }
-
-    public Timestamp getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime;
+        this.tableMark = tableMark;
     }
 
     @Override
@@ -38,17 +35,17 @@ public class TagHll {
         if (o == null || getClass() != o.getClass()) return false;
         TagHll tagHll = (TagHll) o;
         return Objects.equals(id, tagHll.id) &&
-                Objects.equals(key, tagHll.key) &&
-                Objects.equals(value, tagHll.value) &&
+                Objects.equals(tagCode, tagHll.tagCode) &&
+                Objects.equals(tagValue, tagHll.tagValue) &&
                 Arrays.equals(hll, tagHll.hll) &&
                 Objects.equals(version, tagHll.version) &&
-                Objects.equals(table, tagHll.table) &&
+                Objects.equals(tableMark, tagHll.tableMark) &&
                 Objects.equals(updateTime, tagHll.updateTime);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, key, value, version, table, updateTime);
+        int result = Objects.hash(id, tagCode, tagValue, version, tableMark, updateTime);
         result = 31 * result + Arrays.hashCode(hll);
         return result;
     }
@@ -57,11 +54,11 @@ public class TagHll {
     public String toString() {
         return "TagHll{" +
                 "id=" + id +
-                ", key='" + key + '\'' +
-                ", value='" + value + '\'' +
+                ", tagCode='" + tagCode + '\'' +
+                ", tagValue='" + tagValue + '\'' +
                 ", hll=" + Arrays.toString(hll) +
                 ", version=" + version +
-                ", table='" + table + '\'' +
+                ", tableMark='" + tableMark + '\'' +
                 ", updateTime=" + updateTime +
                 '}';
     }
@@ -74,20 +71,20 @@ public class TagHll {
         this.id = id;
     }
 
-    public String getKey() {
-        return key;
+    public String getTagCode() {
+        return tagCode;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setTagCode(String tagCode) {
+        this.tagCode = tagCode;
     }
 
-    public String getValue() {
-        return value;
+    public String getTagValue() {
+        return tagValue;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setTagValue(String tagValue) {
+        this.tagValue = tagValue;
     }
 
     public byte[] getHll() {
@@ -106,11 +103,19 @@ public class TagHll {
         this.version = version;
     }
 
-    public String getTable() {
-        return table;
+    public String getTableMark() {
+        return tableMark;
     }
 
-    public void setTable(String table) {
-        this.table = table;
+    public void setTableMark(String tableMark) {
+        this.tableMark = tableMark;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
     }
 }

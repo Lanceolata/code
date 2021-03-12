@@ -7,7 +7,9 @@ public class Constants {
     /**
      * property key
      */
-    public static final String PROPERTY_KEY_MYBATIS_ENV = "mybatis.env";
+    public static final String PROPERTY_DEFAULT_FILE = "application.properties";
+    public static final String PROPERTY_KEY_ENV_NAME = "env.name";
+    public static final String PROPERTY_KEY_ENV_DB = "env.db";
 
     /**
      * ==================== 任务参数 ====================

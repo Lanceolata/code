@@ -28,13 +28,14 @@ public class MybatisUtils {
 
     static {
         // 优先使用系统变量
-        defaultEnv = System.getProperty(Constants.PROPERTY_KEY_MYBATIS_ENV);
+        defaultEnv = System.getProperty(Constants.PROPERTY_KEY_ENV_DB);
         if (defaultEnv == null) {
             try {
                 Properties properties = new Properties();
-                properties.load(MybatisUtils.class.getClassLoader().getResourceAsStream("application.properties"));
-                defaultEnv = properties.getProperty(Constants.PROPERTY_KEY_MYBATIS_ENV);
+                properties.load(MybatisUtils.class.getClassLoader().getResourceAsStream(Constants.PROPERTY_DEFAULT_FILE));
+                defaultEnv = properties.getProperty(Constants.PROPERTY_KEY_ENV_DB);
             } catch (Exception e) {
+                e.printStackTrace();
                 LOGGER.warn("load application.properties failed.", e);
             }
         }
