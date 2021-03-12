@@ -2,7 +2,6 @@ package com.lanceolata.code.snippets.core.spark.Operation
 
 import com.lanceolata.code.snippets.core.model.HLL
 import com.lanceolata.code.snippets.core.scala.model.FieldValueTag
-import com.lanceolata.code.snippets.core.util.HLLUtils
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.Dataset
 
@@ -34,9 +33,9 @@ class HLLV2Operation(@(transient @param)dataset: Dataset[(FieldValueTag, String)
     ds
       .rdd
       .combineByKey(
-        HLLUtils.toHLL,
+        HLL.toHLL,
         (h: HLL, i: String) => h.update(i),
-        (h1: HLL, h2: HLL) => h1.union(h2)
+        (h1: HLL, h2: HLL) => HLL.union(h1, h2)
       )
   }
 }
