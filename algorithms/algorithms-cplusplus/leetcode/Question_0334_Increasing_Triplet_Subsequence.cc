@@ -9,14 +9,14 @@ class Solution {
     // start with two largest values,
     // as soon as we find a number bigger than both,
     // while both have been updated, return true.
-    int small = INT_MAX, big = INT_MAX;
+    int small = INT_MAX, medium = INT_MAX;
     for (int n : nums) {
       if (n <= small) {
         // update small if n is smaller than both
         small = n;
-      } else if (n <= big) {
+      } else if (n <= medium) {
         // update big only if greater than small but smaller than big
-        big = n;
+        medium = n;
       } else {
         // return if you find a number bigger than both
         return true;

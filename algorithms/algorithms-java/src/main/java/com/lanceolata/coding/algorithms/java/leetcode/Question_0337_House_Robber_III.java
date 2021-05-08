@@ -9,34 +9,13 @@ public class Question_0337_House_Robber_III {
         int val;
         TreeNode left;
         TreeNode right;
-
-        TreeNode(int x) {
-            val = x;
+        TreeNode() {}
+        TreeNode(int val) { this.val = val; }
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
         }
-    }
-
-    public int rob_simple(TreeNode root) {
-        return robSub_simple(root, new HashMap<>());
-    }
-
-    private int robSub_simple(TreeNode root, Map<TreeNode, Integer> map) {
-        if (root == null) return 0;
-        if (map.containsKey(root)) return map.get(root);
-
-        int val = 0;
-
-        if (root.left != null) {
-            val += robSub_simple(root.left.left, map) + robSub_simple(root.left.right, map);
-        }
-
-        if (root.right != null) {
-            val += robSub_simple(root.right.left, map) + robSub_simple(root.right.right, map);
-        }
-
-        val = Math.max(val + root.val, robSub_simple(root.left, map) + robSub_simple(root.right, map));
-        map.put(root, val);
-
-        return val;
     }
 
     public int rob(TreeNode root) {
@@ -44,13 +23,6 @@ public class Question_0337_House_Robber_III {
         return Math.max(res[0], res[1]);
     }
 
-    /**
-     * res[0] 表示不包含当前节点值的最大值
-     * res[1] 表示包含当前值的最大值
-     *
-     * @param root
-     * @return
-     */
     private int[] robSub(TreeNode root) {
         if (root == null) {
             return new int[2];

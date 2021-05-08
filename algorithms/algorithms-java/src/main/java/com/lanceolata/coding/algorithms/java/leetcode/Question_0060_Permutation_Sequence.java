@@ -13,7 +13,7 @@ public class Question_0060_Permutation_Sequence {
         for (int i = 0; i < n; i++) {
             pCount /= n - i;
             int select = k / pCount;
-            sb.append(String.valueOf(nums[select]));
+            sb.append(nums[select]);
 
             for(int j = select; j < n - i - 1; j++) {
                 nums[j] = nums[j + 1];

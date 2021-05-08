@@ -11,7 +11,6 @@ class Solution {
     for(int num : nums){
       map[num]++;
     }
-        
     vector<int> res;
     // pair<first, second>: first is frequency,  second is number
     priority_queue<pair<int,int>> pq; 

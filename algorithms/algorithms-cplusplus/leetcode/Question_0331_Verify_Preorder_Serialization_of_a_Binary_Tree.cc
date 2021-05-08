@@ -6,7 +6,7 @@ using namespace std;
 
 class Solution {
  public:
-  bool isValidSerialization1(string preorder) {
+  bool isValidSerialization(string preorder) {
     istringstream in(preorder);
     vector<string> v;
     string t = "";
@@ -25,42 +25,5 @@ class Solution {
       }
     }
     return cnt == 0 && v.back() == "#";
-  }
-
-  bool isValidSerialization2(string preorder) {
-    istringstream in(preorder);
-    string t = "";
-    int degree = 1;
-    bool degree_is_zero = false;
-    while (getline(in, t, ',')) {
-      if (degree_is_zero) {
-        return false;
-      }
-      if (t == "#") {
-        if (--degree == 0) {
-          degree_is_zero = true;
-        }
-      } else {
-        ++degree;
-      }
-    }
-    return degree == 0;
-  }
-
-  bool isValidSerialization(string preorder) {
-    int capacity = 1;
-    preorder += ",";
-    for (int i = 0; i < preorder.size(); ++i) {
-      if (preorder[i] != ',') {
-        continue;
-      }
-      if (--capacity < 0) {
-        return false;
-      }
-      if (preorder[i - 1] != '#') {
-        capacity += 2;
-      }
-    }
-    return capacity == 0;
   }
 };

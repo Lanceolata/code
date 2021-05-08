@@ -3,7 +3,7 @@ package com.lanceolata.coding.algorithms.java.leetcode;
 import java.util.*;
 
 public class Question_0347_Top_K_Frequent_Elements {
-    public List<Integer> topKFrequent(int[] nums, int k) {
+    public int[] topKFrequent(int[] nums, int k) {
         // build hash map : character and how often it appears
         HashMap<Integer, Integer> count = new HashMap<>();
         for (int n: nums) {
@@ -22,11 +22,10 @@ public class Question_0347_Top_K_Frequent_Elements {
         }
 
         // build output list
-        List<Integer> top_k = new LinkedList<>();
-        while (!heap.isEmpty()) {
-            top_k.add(heap.poll());
+        int[] top = new int[k];
+        for(int i = k - 1; i >= 0; --i) {
+            top[i] = heap.poll();
         }
-        Collections.reverse(top_k);
-        return top_k;
+        return top;
     }
 }
