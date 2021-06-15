@@ -12,14 +12,14 @@ public class Question_0155_Min_Stack {
         this.min = 0L;
     }
 
-    public void push(int x) {
+    public void push(int val) {
         if (stack.empty()) {
             stack.push(0L);
-            min = x;
+            min = val;
         } else {
-            stack.push(x - min);
-            if (x < min) {
-                min = x;
+            stack.push(val - min);
+            if (val < min) {
+                min = val;
             }
         }
     }

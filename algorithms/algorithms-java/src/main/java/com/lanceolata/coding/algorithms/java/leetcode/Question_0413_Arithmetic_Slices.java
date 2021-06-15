@@ -1,10 +1,10 @@
 package com.lanceolata.coding.algorithms.java.leetcode;
 
 public class Question_0413_Arithmetic_Slices {
-    public int numberOfArithmeticSlices(int[] A) {
+    public int numberOfArithmeticSlices(int[] nums) {
         int res = 0, cur = 0;
-        for (int i = 2; i < A.length; i++) {
-            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) {
+        for (int i = 2; i < nums.length; i++) {
+            if (nums[i] - nums[i - 1] == nums[i - 1] - nums[i - 2]) {
                 cur += 1;
                 res += cur;
             } else {

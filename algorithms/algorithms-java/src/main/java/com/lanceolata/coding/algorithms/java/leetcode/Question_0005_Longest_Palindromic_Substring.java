@@ -16,7 +16,8 @@ public class Question_0005_Longest_Palindromic_Substring {
 
     private void expandAroundCenter(String s, int l, int r, int[] record) {
         while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
-            l--; r++;
+            l--;
+            r++;
         }
         if (r - l - 1 > record[1]) {
             record[0] = l + 1;

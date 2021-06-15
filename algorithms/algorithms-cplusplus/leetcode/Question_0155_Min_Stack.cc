@@ -7,14 +7,14 @@ class MinStack {
   MinStack() {
   }
   
-  void push(int x) {
+  void push(int val) {
     if (values.empty()) {
       values.push(0L);
-      min = x;
+      min = val;
     } else {
-      values.push(x - min);
-      if (x < min) {
-        min = x;
+      values.push(val - min);
+      if (val < min) {
+        min = val;
       }
     }
   }
