@@ -4,21 +4,21 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class Question_0473_Matchsticks_to_Square {
-    public boolean makesquare(int[] nums) {
-        if (nums == null || nums.length < 4) {
+    public boolean makesquare(int[] matchsticks) {
+        if (matchsticks == null || matchsticks.length < 4) {
             return false;
         }
         int sum = 0;
-        for (int n : nums) {
+        for (int n : matchsticks) {
             sum += n;
         }
         if (sum % 4 != 0) {
             return false;
         }
         int[] res = new int[4];
-        Arrays.sort(nums);
-        reverse(nums);
-        return help(nums, res, 0, sum / 4);
+        Arrays.sort(matchsticks);
+        reverse(matchsticks);
+        return help(matchsticks, res, 0, sum / 4);
     }
 
     private boolean help(int[] nums, int[] sums, int pos, int target) {
