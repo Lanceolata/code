@@ -5,24 +5,24 @@ using namespace std;
 
 class Solution {
  public:
-  int findTargetSumWays(vector<int>& nums, int S) {
+  int findTargetSumWays(vector<int>& nums, int target) {
     int res = 0;
-    help(nums, S, 0, res);
+    help(nums, target, 0, res);
     return res;
   }
 
-  void help(vector<int>& nums, long S, int i, int& res) {
+  void help(vector<int>& nums, long target, int i, int& res) {
     if (i >= nums.size()) {
-      if (S == 0) {
+      if (target == 0) {
         ++res;
       }
       return;
     }
-    help(nums, S - nums[i], i + 1, res);
-    help(nums, S + nums[i], i + 1, res);
+    help(nums, target - nums[i], i + 1, res);
+    help(nums, target + nums[i], i + 1, res);
   }
 
-  int findTargetSumWays2(vector<int>& nums, int S) {
+  int findTargetSumWays2(vector<int>& nums, int target) {
     unordered_map<int, int> dp;
     dp[0] = 1;
     for (int num : nums) {
@@ -34,6 +34,6 @@ class Solution {
       }
       dp = t;
     }
-    return dp[S];
+    return dp[target];
   }
 };

@@ -4,11 +4,11 @@ using namespace std;
 
 class Solution {
  public:
-  string licenseKeyFormatting(string S, int K) {
+  string licenseKeyFormatting(string s, int k) {
     string res = "";
     int cnt = 0;
-    for (int i = S.size()-1; i >= 0; i--) {
-      char c = S[i];
+    for (int i = s.size() - 1 ; i >= 0; i--) {
+      char c = s[i];
       if (c == '-') {
         continue;
       }
@@ -16,7 +16,7 @@ class Solution {
         c -= 32;
       }
       res.push_back(c);
-      if (++cnt % K == 0) {
+      if (++cnt % k == 0) {
         res.push_back('-');
       }
     }

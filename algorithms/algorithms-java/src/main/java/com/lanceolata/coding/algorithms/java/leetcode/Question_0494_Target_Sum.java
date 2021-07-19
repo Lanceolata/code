@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Question_0494_Target_Sum {
-    public int findTargetSumWays(int[] nums, int S) {
+    public int findTargetSumWays(int[] nums, int target) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
@@ -19,8 +19,8 @@ public class Question_0494_Target_Sum {
             }
             dp = t;
         }
-        if (dp.containsKey(S)) {
-            return dp.get(S);
+        if (dp.containsKey(target)) {
+            return dp.get(target);
         }
         return 0;
     }
