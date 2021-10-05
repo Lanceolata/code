@@ -2,7 +2,7 @@ package com.lanceolata.coding.algorithms.java.leetcode;
 
 import java.util.Arrays;
 
-public class question_0164_Maximum_Gap {
+public class Question_0164_Maximum_Gap {
     public int maximumGap(int[] nums) {
         if (nums == null || nums.length < 2) {
             return 0;
