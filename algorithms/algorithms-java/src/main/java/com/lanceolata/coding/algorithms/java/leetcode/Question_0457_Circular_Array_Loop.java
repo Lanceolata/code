@@ -32,7 +32,7 @@ public class Question_0457_Circular_Array_Loop {
         return false;
     }
 
-    int getIndex(int i, int[] nums){
+    private int getIndex(int i, int[] nums) {
         int n = nums.length;
         return (i + nums[i] % n + n) % n;
     }
