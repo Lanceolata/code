@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="xmlUser1" class="com.lanceolata.code.snippets.common.domain.User">
+        <property name="id" value="1"/>
+        <property name="name" value="xmlUser1"/>
+        <property name="city" value="HANGZHOU"/>
+        <property name="workCities" value="BEIJING,HANGZHOU"/>
+        <property name="lifeCities">
+            <list>
+                <value>BEIJING</value>
+                <value>SHANGHAI</value>
+            </list>
+        </property>
+        <property name="configFileLocation" value="classpath:/META-INF/user-config.properties"/>
+    </bean>
+
+    <bean id="xmlUser2" class="com.lanceolata.code.snippets.common.domain.User" primary="true">
+        <property name="id" value="2"/>
+        <property name="name" value="xmlUser2"/>
+    </bean>
+
+    <bean id="xmlSupperUser1" class="com.lanceolata.code.snippets.common.domain.SuperUser" parent="xmlUser1">
+        <property name="address" value="杭州"/>
+    </bean>
+
+    <!-- 延迟查找 -->
+    <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <property name="targetBeanName" value="xmlUser1"/>
+    </bean>
+</beans>
