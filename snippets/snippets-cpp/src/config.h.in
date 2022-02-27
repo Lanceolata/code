@@ -1,0 +1,3 @@
+#cmakedefine WITH_GLOG
+
+#cmakedefine USE_SUB
