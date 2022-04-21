@@ -30,7 +30,7 @@ class Solution {
       res.push_back(new TreeNode(0));
     } else if (n % 2 == 1) {
       for (int i = 0; i < n; i++) {
-        int j = n - i - i;
+        int j = n - 1 - i;
         for (TreeNode* left : help(i, m)) {
           for (TreeNode* right : help(j, m)) {
             res.push_back(new TreeNode(0, left, right));
