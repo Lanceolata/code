@@ -23,23 +23,4 @@ class Solution {
     }
     return dp[0][0];
   }
-
-  bool isMatch_recursion(string s, string p) {
-    if (p.empty()) {
-      return s.empty();
-    }
-    return help(s, p, 0, 0);
-  }
-
-  bool help(string s, string p, int i, int j) {
-    if (j >= p.size()) {
-      return i >= s.size();
-    }
-    bool match = i < s.size() && (s[i] == p[j] || p[j] == '.');
-    if (j + 1 < p.size() && p[j + 1] == '*') {
-      return help(s, p, i, j + 2) || (match && help(s, p, i + 1, j));
-    } else {
-      return match && help(s, p, i + 1, j + 1);
-    }
-  }
 };

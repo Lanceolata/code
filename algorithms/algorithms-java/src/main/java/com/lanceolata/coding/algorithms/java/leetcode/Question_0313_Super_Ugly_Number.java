@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Question_0313_Super_Ugly_Number {
     public int nthSuperUglyNumber(int n, int[] primes) {
-        int[] dp = new int[n];
+        long[] dp = new long[n];
         Arrays.fill(dp, Integer.MAX_VALUE);
         dp[0] = 1;
         int[] indexes = new int[primes.length];
@@ -18,6 +18,6 @@ public class Question_0313_Super_Ugly_Number {
                 }
             }
         }
-        return dp[n - 1];
+        return (int)dp[n - 1];
     }
 }

@@ -6,7 +6,7 @@ using namespace std;
 class Solution {
  public:
   int nthSuperUglyNumber(int n, vector<int>& primes) {
-    vector<int> dp(n, INT_MAX);
+    vector<long long> dp(n, INT_MAX);
     dp[0] = 1;
     vector<int> index(primes.size(), 0);
     for (int i = 1; i < n; i++) {
@@ -19,6 +19,6 @@ class Solution {
         }
       }
     }
-    return dp[n - 1];
+    return (int)dp[n - 1];
   }
 };
