@@ -1,16 +1,16 @@
 package com.lanceolata.coding.algorithms.java.leetcode;
 
 public class Question_0168_Excel_Sheet_Column_Title {
-    public String convertToTitleRecursive(int n) {
-        return n == 0 ? "" : convertToTitleRecursive(--n / 26) + (char) ('A' + (n % 26));
+    public String convertToTitleRecursive(int columnNumber) {
+        return columnNumber == 0 ? "" : convertToTitleRecursive(--columnNumber / 26) + (char) ('A' + (columnNumber % 26));
     }
 
-    public String convertToTitle(int n) {
+    public String convertToTitle(int columnNumber) {
         StringBuilder sb = new StringBuilder();
-        while (n != 0) {
-            char c = (char) ((n - 1) % 26 + 'A');
+        while (columnNumber != 0) {
+            char c = (char) ((columnNumber - 1) % 26 + 'A');
             sb.append(c);
-            n = (n - 1) / 26;
+            columnNumber = (columnNumber - 1) / 26;
         }
         return sb.reverse().toString();
     }
