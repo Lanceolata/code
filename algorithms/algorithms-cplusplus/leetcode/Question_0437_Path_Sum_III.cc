@@ -14,18 +14,18 @@ struct TreeNode {
 
 class Solution {
  public:
-  int pathSum(TreeNode* root, int sum) {
+  int pathSum(TreeNode* root, int targetSum) {
     if (!root) { 
       return 0;
     }
     int num = 0;
-    unordered_map<int, int> num_paths;
+    unordered_map<long long, long long> num_paths;
     num_paths[0] = 1;
-    help(root, sum, 0, num, num_paths);
+    help(root, targetSum, 0, num, num_paths);
     return num;
   }
 
-  void help(TreeNode* root, int sum, int cursum, int& num, unordered_map<int, int>& num_paths) {
+  void help(TreeNode* root, int sum, long long cursum, int& num, unordered_map<long long, long long>& num_paths) {
     if (!root) {
       return;
     }

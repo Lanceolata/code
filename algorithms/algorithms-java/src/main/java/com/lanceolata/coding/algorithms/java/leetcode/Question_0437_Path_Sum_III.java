@@ -20,32 +20,32 @@ public class Question_0437_Path_Sum_III {
 
     private int res = 0;
 
-    public int pathSum(TreeNode root, int sum) {
+    public int pathSum(TreeNode root, int targetSum) {
         res = 0;
         if (root == null) {
             return res;
         }
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, 1);
-        help(root, sum, 0, map);
+        Map<Long, Integer> map = new HashMap<>();
+        map.put(0L, 1);
+        help(root, targetSum, 0, map);
         return res;
     }
 
-    private void help(TreeNode root, int sum, int cur, Map<Integer, Integer> map) {
+    private void help(TreeNode root, int targetSum, long cur, Map<Long, Integer> map) {
         if (root == null) {
             return;
         }
         cur += root.val;
-        if (map.containsKey(cur - sum)) {
-            res += map.get(cur - sum);
+        if (map.containsKey(cur - targetSum)) {
+            res += map.get(cur - targetSum);
         }
         if (map.containsKey(cur)) {
             map.put(cur, map.get(cur) + 1);
         } else {
             map.put(cur, 1);
         }
-        help(root.left, sum, cur, map);
-        help(root.right, sum, cur, map);
+        help(root.left, targetSum, cur, map);
+        help(root.right, targetSum, cur, map);
         map.put(cur, map.get(cur) - 1);
     }
 }
