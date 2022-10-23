@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Question_0241_Different_Ways_to_Add_Parentheses {
-    public List<Integer> diffWaysToCompute(String input) {
+    public List<Integer> diffWaysToCompute(String expression) {
         List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
+        for (int i = 0; i < expression.length(); i++) {
+            char ch = expression.charAt(i);
             if (ch == '+' || ch == '-' || ch == '*') {
-                List<Integer> left = diffWaysToCompute(input.substring(0, i));
-                List<Integer> right = diffWaysToCompute(input.substring(i + 1));
+                List<Integer> left = diffWaysToCompute(expression.substring(0, i));
+                List<Integer> right = diffWaysToCompute(expression.substring(i + 1));
                 for (int l : left) {
                     for (int r : right) {
                         if (ch == '+') {
@@ -25,7 +25,7 @@ public class Question_0241_Different_Ways_to_Add_Parentheses {
             }
         }
         if (res.isEmpty()) {
-            res.add(Integer.valueOf(input));
+            res.add(Integer.valueOf(expression));
         }
         return res;
     }
