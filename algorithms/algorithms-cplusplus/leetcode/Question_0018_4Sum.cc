@@ -21,7 +21,7 @@ class Solution {
         }
         size_t l = n + 1, r = nums.size() - 1;
         while (l < r) {
-          int sum = nums[m] + nums[n] + nums[l] + nums[r];
+          long long sum = (long long) nums[m] + nums[n] + nums[l] + nums[r];
           if (sum == target) {
             vector<int> tmp = {nums[m], nums[n], nums[l], nums[r]};
             res.push_back(tmp);

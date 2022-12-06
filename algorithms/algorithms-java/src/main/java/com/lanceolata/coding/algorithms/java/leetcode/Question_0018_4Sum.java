@@ -23,7 +23,7 @@ public class Question_0018_4Sum {
                 }
                 int l = j + 1, r = nums.length - 1;
                 while (l < r) {
-                    int n = nums[i] + nums[j] + nums[l] + nums[r];
+                    long n = (long)nums[i] + (long)nums[j] + (long)nums[l] + (long)nums[r];
                     if (n == target) {
                         List<Integer> list = new ArrayList<>();
                         list.add(nums[i]);
