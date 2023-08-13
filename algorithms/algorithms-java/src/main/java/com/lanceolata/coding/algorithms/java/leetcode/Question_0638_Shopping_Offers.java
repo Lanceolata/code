@@ -5,31 +5,27 @@ import java.util.List;
 
 public class Question_0638_Shopping_Offers {
     public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
-        return shopping(price, special, needs);
+        return help(price, special, needs, 0);
     }
 
-    public int shopping(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
-        int j = 0, res = dot(needs, price);
-        for (List<Integer> s : special) {
-            ArrayList<Integer> clone = new ArrayList<>(needs);
-            for (j = 0; j < needs.size(); j++) {
-                int diff = clone.get(j) - s.get(j);
-                if (diff < 0) {
+    public int help(List<Integer> price, List<List<Integer>> special, List<Integer> needs, int pos) {
+        int sum = 0, len = price.size();
+        for (int i = 0; i < len; i++) {
+            sum += needs.get(i) * price.get(i);
+        }
+        for (int i = pos; i < special.size(); i++) {
+            List<Integer> list = special.get(i);
+            List<Integer> temp = new ArrayList<>();
+            for (int j = 0; j < needs.size(); j++) {
+                if (needs.get(j) < list.get(j)) { // check if the current offer is valid
+                    temp = null;
                     break;
                 }
-                clone.set(j, diff);
+                temp.add(needs.get(j) - list.get(j));
             }
-            if (j == needs.size()) {
-                res = Math.min(res, s.get(j) + shopping(price, special, clone));
+            if (temp != null) { // use the current offer and try next
+                sum = Math.min(sum, list.get(list.size() - 1) + help(price, special, temp, i));
             }
-        }
-        return res;
-    }
-
-    public int dot(List<Integer> a, List<Integer> b) {
-        int sum = 0;
-        for (int i = 0; i < a.size(); i++) {
-            sum += a.get(i) * b.get(i);
         }
         return sum;
     }
