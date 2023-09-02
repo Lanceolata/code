@@ -20,7 +20,7 @@ public class Question_0117_Populating_Next_Right_Pointers_in_Each_Node_II {
             right = _right;
             next = _next;
         }
-    };
+    }
 
     public Node connect(Node root) {
         Node cur = root, dummy = new Node(0, null, null, null), p = null;
