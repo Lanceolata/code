@@ -1,0 +1,12 @@
+package com.lanceolata.coding.algorithms.java.leetcode;
+
+public class Question_1017_Convert_to_Base_2 {
+    public String baseNeg2(int n) {
+        StringBuilder res = new StringBuilder();
+        while (n != 0) {
+            res.append(n & 1);
+            n = -(n >> 1);
+        }
+        return res.length() > 0 ? res.reverse().toString() : "0";
+    }
+}
