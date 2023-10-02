@@ -2,32 +2,36 @@ package com.lanceolata.coding.algorithms.java.leetcode;
 
 public class Question_0065_Valid_Number {
     public boolean isNumber(String s) {
-        s = s.trim();
-        boolean pointSeen = false, eSeen = false, numberSeen = false, numberAfterE = true;
+        boolean num = false, exp = false, sign = false, dec = false;
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if ('0' <= c && c <= '9') {
-                numberSeen = true;
-                numberAfterE = true;
-            } else if (c == '.') {
-                if (eSeen || pointSeen) {
-                    return false;
-                }
-                pointSeen = true;
+            if (c >= '0' && c <= '9') {
+                num = true;
             } else if (c == 'e' || c == 'E') {
-                if (eSeen || !numberSeen) {
+                if (exp || !num) {
                     return false;
+                } else {
+                    exp = true;
+                    sign = false;
+                    num = false;
+                    dec = false;
                 }
-                numberAfterE = false;
-                eSeen = true;
-            } else if (c == '-' || c == '+') {
-                if (i != 0 && s.charAt(i - 1) != 'e') {
+            } else if (c == '+' || c == '-') {
+                if (sign || num || dec) {
                     return false;
+                } else {
+                    sign = true;
+                }
+            } else if (c == '.') {
+                if (dec || exp) {
+                    return false;
+                } else {
+                    dec = true;
                 }
             } else {
                 return false;
             }
         }
-        return numberSeen && numberAfterE;
+        return num;
     }
 }

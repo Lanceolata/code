@@ -5,37 +5,32 @@ using namespace std;
 class Solution {
  public:
   bool isNumber(string s) {
-    while(!s.empty() && s[0] == ' ') {
-      s.erase(s.begin());
-    }
-    while (!s.empty() && s[s.size() - 1] == ' ') {
-      s.erase(s.end()-1);
-    }
-    bool pointSeen = false, eSeen = false, numberSeen = false, numberAfterE = true;
-    for (int i = 0; i < s.size(); i++) {
-      char c = s[i];
-      if ('0' <= c && c <= '9') {
-        numberSeen = true;
-        numberAfterE = true;
-      } else if (c == '.') {
-        if (eSeen || pointSeen) {
-          return false;
-        }
-        pointSeen = true;
+    bool num = false, exp = false, sign = false, dec = false;
+    for (auto c : s) {
+      if (c >= '0' && c <= '9') {
+        num = true ;    
       } else if (c == 'e' || c == 'E') {
-        if (eSeen || !numberSeen) {
+        if (exp || !num) {
           return false;
+        } else {
+          exp = true, sign = false, num = false, dec = false;
         }
-        numberAfterE = false;
-        eSeen = true;
-      } else if (c == '-' || c == '+') {
-        if (i != 0 && s[i - 1] != 'e') {
+      } else if (c == '+' || c == '-') {
+        if (sign || num || dec) {
           return false;
+        } else {
+          sign = true;
+        }
+      } else if (c == '.') {
+        if (dec || exp) {
+          return false;
+        } else {
+          dec = true;
         }
       } else {
         return false;
       }
     }
-    return numberSeen && numberAfterE;
+    return num;
   }
 };
