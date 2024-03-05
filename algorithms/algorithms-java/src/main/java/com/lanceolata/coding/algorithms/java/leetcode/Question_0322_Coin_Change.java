@@ -18,6 +18,6 @@ public class Question_0322_Coin_Change {
                 }
             }
         }
-        return  dp[amount] > amount ? -1 : dp[amount];
+        return dp[amount] > amount ? -1 : dp[amount];
     }
 }

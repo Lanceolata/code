@@ -1,19 +1,44 @@
 package com.lanceolata.coding.algorithms.java.leetcode;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Question_0468_Validate_IP_Address {
-    public String validIPAddress(String IP) {
-        Pattern p1 = Pattern.compile("^((([1-9]?|1\\d|2[0-4])\\d|25[0-5])\\.){3}(([1-9]?|1\\d|2[0-4])\\d|25[0-5])$");
-        Pattern p2 = Pattern.compile("^(?i)([0-9a-f]{1,4}:){7}([0-9a-f]){1,4}$");
-
-        Matcher m1 = p1.matcher(IP);
-        if (m1.matches()) return "IPv4";
-
-        Matcher m2 = p2.matcher(IP);
-        if (m2.matches()) return "IPv6";
-
+    public String validIPAddress(String queryIP) {
+        if (queryIP.chars().filter(ch -> ch == '.').count() == 3) {
+            String[] ipv4 = queryIP.split("\\.", -1);
+            for (String s : ipv4) {
+                if (!isIPv4(s)) {
+                    return "Neither";
+                }
+            }
+            return "IPv4";
+        }
+        if (queryIP.chars().filter(ch -> ch == ':').count() == 7) {
+            String[] ipv6 = queryIP.split("\\:", -1);
+            for (String s : ipv6) {
+                if (!isIPv6(s)) {
+                    return "Neither";
+                }
+            }
+            return "IPv6";
+        }
         return "Neither";
+    }
+
+    public static boolean isIPv4(String s) {
+        try {
+            return String.valueOf(Integer.valueOf(s)).equals(s) && Integer.parseInt(s) >= 0 && Integer.parseInt(s) <= 255;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isIPv6(String s) {
+        if (s.length() > 4) {
+            return false;
+        }
+        try {
+            return Integer.parseInt(s, 16) >= 0 && s.charAt(0) != '-';
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

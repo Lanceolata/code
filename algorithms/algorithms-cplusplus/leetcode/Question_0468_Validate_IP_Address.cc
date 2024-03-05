@@ -1,23 +1,16 @@
 #include <string>
 #include <regex>
+#include <sstream>
 
 using namespace std;
 
 class Solution {
  public:
-  string validIPAddress(string IP) {
-    regex ipv4("^([1-9]\\d{0,2}|0)(?:\\.([1-9]\\d{0,2}|0)){3}$");
-    regex ipv6("^([0-9a-fA-F]{1,4})(\\:[0-9a-fA-F]{1,4}){7}$");
-
-    smatch m;
-    if (regex_match(IP, m, ipv4)) {
-      for (auto& e: m) {
-        if (stoi(e) > 255) {
-          return "Neither";
-        }
-      }
+  string validIPAddress(string queryIP) {
+    regex ipv4("(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])"), ipv6("((([0-9a-fA-F]){1,4})\\:){7}([0-9a-fA-F]){1,4}");   // create regex object for regulare expression
+    if(regex_match(queryIP, ipv4)) {
       return "IPv4";
-    } else if (regex_match(IP, m, ipv6)) {
+    } else if(regex_match(queryIP, ipv6)) {
       return "IPv6";
     }
     return "Neither";
