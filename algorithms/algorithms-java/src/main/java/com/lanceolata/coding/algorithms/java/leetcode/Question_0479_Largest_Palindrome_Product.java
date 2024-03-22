@@ -37,16 +37,14 @@ public class Question_0479_Largest_Palindrome_Product {
         int high = (int)max, low = (int)(max / 10);
         for (int i = high; i > low; i--) {
             long palindrome = (int)(i * Math.pow(10, n)) + reverse(i);
-            System.out.println(palindrome);
-            break;
-//            for (long j = high; j > low; j--) {
-//                if (palindrome / j > high) {
-//                    break;
-//                }
-//                if (palindrome % j == 0) {
-//                    return palindrome % 1337;
-//                }
-//            }
+           for (long j = high; j > low; j--) {
+               if (palindrome / j > high) {
+                   break;
+               }
+               if (palindrome % j == 0) {
+                   return (int)(palindrome % 1337);
+               }
+           }
         }
         return -1;
     }
@@ -58,10 +56,5 @@ public class Question_0479_Largest_Palindrome_Product {
             num /= 10;
         }
         return rev;
-    }
-
-    public static void main(String[] args) {
-        Question_0479_Largest_Palindrome_Product test = new Question_0479_Largest_Palindrome_Product();
-        test.largestPalindrome2(5);
     }
 }
