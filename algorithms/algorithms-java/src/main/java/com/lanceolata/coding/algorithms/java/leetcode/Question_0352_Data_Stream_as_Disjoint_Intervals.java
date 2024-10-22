@@ -10,22 +10,22 @@ public class Question_0352_Data_Stream_as_Disjoint_Intervals {
         treeMap = new TreeMap<>();
     }
 
-    public void addNum(int val) {
-        if (treeMap.containsKey(val)) {
+    public void addNum(int value) {
+        if (treeMap.containsKey(value)) {
             return;
         }
-        Integer l = treeMap.lowerKey(val);
-        Integer h = treeMap.higherKey(val);
-        if (l != null && h != null && treeMap.get(l)[1] + 1 == val && h == val + 1) {
+        Integer l = treeMap.lowerKey(value);
+        Integer h = treeMap.higherKey(value);
+        if (l != null && h != null && treeMap.get(l)[1] + 1 == value && h == value + 1) {
             treeMap.get(l)[1] = treeMap.get(h)[1];
             treeMap.remove(h);
-        } else if (l != null && treeMap.get(l)[1] + 1 >= val) {
-            treeMap.get(l)[1] = Math.max(treeMap.get(l)[1], val);
-        } else if (h != null && h == val + 1) {
-            treeMap.put(val, new int[] {val, treeMap.get(h)[1]});
+        } else if (l != null && treeMap.get(l)[1] + 1 >= value) {
+            treeMap.get(l)[1] = Math.max(treeMap.get(l)[1], value);
+        } else if (h != null && h == value + 1) {
+            treeMap.put(value, new int[] {value, treeMap.get(h)[1]});
             treeMap.remove(h);
         } else {
-            treeMap.put(val, new int[] {val, val});
+            treeMap.put(value, new int[] {value, value});
         }
     }
 

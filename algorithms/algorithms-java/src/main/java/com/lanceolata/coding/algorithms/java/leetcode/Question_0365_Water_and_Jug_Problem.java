@@ -1,8 +1,8 @@
 package com.lanceolata.coding.algorithms.java.leetcode;
 
 public class Question_0365_Water_and_Jug_Problem {
-    public boolean canMeasureWater(int jug1Capacity, int jug2Capacity, int targetCapacity) {
-        return targetCapacity == 0 || (jug1Capacity + jug2Capacity >= targetCapacity && targetCapacity % gcd(jug1Capacity, jug2Capacity) == 0);
+    public boolean canMeasureWater(int x, int y, int target) {
+        return target == 0 || (x + y >= target && target % gcd(x, y) == 0);
     }
 
     private int gcd(int x, int y) {
