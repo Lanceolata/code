@@ -28,7 +28,7 @@
         <scala.version>2.11.12</scala.version>
         <scala.binary.version>2.11</scala.binary.version>
         <json4s.version>3.6.10</json4s.version>
-        <hadoop.version>3.3.0</hadoop.version>
+        <hadoop.version>3.3.3</hadoop.version>
         <spark.version>2.3.4</spark.version>
         <flink.version>1.12.0</flink.version>
         <!-- thrfit服务配置，预留 -->
