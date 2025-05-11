@@ -11,7 +11,7 @@ class Solution {
     int res = 0, prod = 1;
     for (int i = 0, j = 0; j < nums.size(); j++) {
       prod *= nums[j];
-      while(prod >= k) {
+      while(i <= j && prod >= k) {
         prod /= nums[i++];
       }
       res += j - i + 1;

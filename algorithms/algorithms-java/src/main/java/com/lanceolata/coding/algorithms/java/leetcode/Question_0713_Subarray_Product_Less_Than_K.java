@@ -8,7 +8,7 @@ public class Question_0713_Subarray_Product_Less_Than_K {
         int res = 0, prod = 1;
         for (int i = 0, j = 0; j < nums.length; j++) {
             prod *= nums[j];
-            while(prod >= k) {
+            while (i <= j && prod >= k) {
                 prod /= nums[i++];
             }
             res += j - i + 1;

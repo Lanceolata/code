@@ -7,15 +7,15 @@ class MyCalendar {
   MyCalendar() {
   }
 
-  bool book(int start, int end) {
-    map<int,int>::iterator next = calendar.lower_bound(start);
-    if (next != calendar.end() && next->first < end) {
+  bool book(int startTime, int endTime) {
+    map<int,int>::iterator next = calendar.lower_bound(startTime);
+    if (next != calendar.end() && next->first < endTime) {
       return false;
     }
-    if (next != calendar.begin() && start < (--next)->second) {
+    if (next != calendar.begin() && startTime < (--next)->second) {
       return false;
     }
-    calendar[start] = end;
+    calendar[startTime] = endTime;
     return true;
   }
 

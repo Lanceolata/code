@@ -9,15 +9,15 @@ public class Question_0731_My_Calendar_II {
         calendar = new TreeMap<>();
     }
 
-    public boolean book(int start, int end) {
-        calendar.put(start, calendar.getOrDefault(start, 0) + 1);
-        calendar.put(end, calendar.getOrDefault(end, 0) - 1);
+    public boolean book(int startTime, int endTime) {
+        calendar.put(startTime, calendar.getOrDefault(startTime, 0) + 1);
+        calendar.put(endTime, calendar.getOrDefault(endTime, 0) - 1);
         int active = 0;
         for (int d : calendar.values()) {
             active += d;
             if (active >= 3) {
-                calendar.put(start, calendar.get(start) - 1);
-                calendar.put(end, calendar.get(end) + 1);
+                calendar.put(startTime, calendar.get(startTime) - 1);
+                calendar.put(endTime, calendar.get(endTime) + 1);
                 return false;
             }
         }

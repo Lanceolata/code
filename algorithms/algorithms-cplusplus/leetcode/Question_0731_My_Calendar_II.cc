@@ -7,15 +7,15 @@ class MyCalendarTwo {
   MyCalendarTwo() {
   }
   
-  bool book(int start, int end) {
-    calendar[start] += 1;
-    calendar[end] -= 1;
+  bool book(int startTime, int endTime) {
+    calendar[startTime] += 1;
+    calendar[endTime] -= 1;
     int active = 0;
     for (map<int, int>::iterator it = calendar.begin(); it != calendar.end(); it++) {
       active += it->second;
       if (active >= 3) {
-        calendar[start] -= 1;
-        calendar[end] += 1;
+        calendar[startTime] -= 1;
+        calendar[endTime] += 1;
         return false;
       }
     }
